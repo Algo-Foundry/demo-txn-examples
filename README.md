@@ -6,12 +6,12 @@ The transactions performed are
 2. Modify Asset
 3. Transfer Algos
 4. Asset Opt In
-5. Transfer ASset
+5. Transfer Asset
 
 Refer to the following guides for transaction syntax
 
-[Algo Builder](https://algobuilder.dev/guide/execute-transaction.html)
-[Algorand SDK (under functions section)](https://algorand.github.io/js-algorand-sdk/modules.html)
+- [Algo Builder](https://algobuilder.dev/guide/execute-transaction.html)
+- [Algorand SDK (under functions section)](https://algorand.github.io/js-algorand-sdk/modules.html)
 
 ## Setup instructions
 
