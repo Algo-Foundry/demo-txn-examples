@@ -1,4 +1,4 @@
-const { executeTransaction, readAppGlobalState, readAppLocalState } = require("@algo-builder/algob");
+const { executeTransaction } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
 const algosdk = require("algosdk");
 
