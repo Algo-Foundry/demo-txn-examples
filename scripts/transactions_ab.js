@@ -16,7 +16,7 @@ async function run(runtimeEnv, deployer) {
     // modify clawback address - manager is master
     const newClawbackAcc = algosdk.generateAccount();
     console.log("Clawback address will be %s", newClawbackAcc.addr);
-    await executeTransaction(deployer, {
+    await deployer.executeTx({
         type: types.TransactionType.ModifyAsset,
         sign: types.SignType.SecretKey,
         fromAccount: master,
@@ -31,7 +31,7 @@ async function run(runtimeEnv, deployer) {
 
     // create asset receiver
     const receiver = algosdk.generateAccount();
-    await executeTransaction(deployer, {
+    await deployer.executeTx({
         type: types.TransactionType.TransferAlgo,
         sign: types.SignType.SecretKey,
         fromAccount: master,
@@ -41,7 +41,7 @@ async function run(runtimeEnv, deployer) {
     });
 
     // asset opt in
-    await executeTransaction(deployer, {
+    await deployer.executeTx({
         type: types.TransactionType.OptInASA,
         sign: types.SignType.SecretKey,
         fromAccount: receiver,
@@ -50,7 +50,7 @@ async function run(runtimeEnv, deployer) {
     });
 
     // transfer asset
-    await executeTransaction(deployer, {
+    await deployer.executeTx({
         type: types.TransactionType.TransferAsset,
         sign: types.SignType.SecretKey,
         fromAccount: master,
