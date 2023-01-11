@@ -83,7 +83,7 @@ const modifyAssetClawback = async (assetId, manager, clawbackAddr) => {
     assetIndex: assetId,
     clawback: clawbackAddr,
     suggestedParams,
-    strictEmptyAddressChecking: false
+    strictEmptyAddressChecking: false // allows undefined addresses as args
   });
 
   // sign the transaction
