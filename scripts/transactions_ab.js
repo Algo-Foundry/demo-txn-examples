@@ -1,4 +1,3 @@
-const { executeTransaction } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
 const algosdk = require("algosdk");
 
@@ -6,7 +5,22 @@ async function run(runtimeEnv, deployer) {
     const master = deployer.accountsByName.get("master");
 
     // create asset - refer to assets/asa.yaml
-    const createAssetTxn = await deployer.deployASA("TESTASSET", {
+    const asaDef = {
+        total: 1000000,
+        decimals: 0,
+        defaultFrozen: false,
+        unitName: "TA",
+        url: "website",
+        metadataHash: "12312442142141241244444411111133",
+        note: "note",
+        manager: master.addr,
+        reserve: master.addr,
+        freeze: master.addr,
+        clawback: master.addr
+    };
+
+    // using deployer.deployASADef instead of deployer.deployASA
+    const createAssetTxn = await deployer.deployASADef("TESTASSET", asaDef, {
         creator: master,
         totalFee: 1000,
         validRounds: 1002,
@@ -30,6 +44,7 @@ async function run(runtimeEnv, deployer) {
     console.log("Clawback address modified to %s", asset["params"]["clawback"]);
 
     // create asset receiver
+    console.log("Transferring algos...");
     const receiver = algosdk.generateAccount();
     await deployer.executeTx({
         type: types.TransactionType.TransferAlgo,
@@ -41,6 +56,7 @@ async function run(runtimeEnv, deployer) {
     });
 
     // asset opt in
+    console.log("Asset Opt In...");
     await deployer.executeTx({
         type: types.TransactionType.OptInASA,
         sign: types.SignType.SecretKey,
@@ -50,6 +66,7 @@ async function run(runtimeEnv, deployer) {
     });
 
     // transfer asset
+    console.log("Transferring asset...");
     await deployer.executeTx({
         type: types.TransactionType.TransferAsset,
         sign: types.SignType.SecretKey,
@@ -61,7 +78,7 @@ async function run(runtimeEnv, deployer) {
     });
 
     const receiverAcc = await deployer.algodClient.accountInformation(receiver.addr).do();
-    console.log(receiverAcc.assets);
+    console.log("Receiver assets balance:", receiverAcc.assets);
 }
 
 module.exports = { default: run };
