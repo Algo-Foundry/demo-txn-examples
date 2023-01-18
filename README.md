@@ -26,7 +26,8 @@ yarn install
 
 ### Run transactions using Algo Builder
 ```
-yarn run algob run deploy
+# add a --force flag after the command to redeploy again
+yarn run algob deploy
 ```
 
 ### Run transactions using Algorand SDK
