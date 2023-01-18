@@ -26,7 +26,7 @@ yarn install
 
 ### Run transactions using Algo Builder
 ```
-# add a --force flag after the command to redeploy again
+# add a --force flag at the end command to redeploy again
 yarn run algob deploy
 ```
 
