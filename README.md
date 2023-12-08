@@ -1,5 +1,5 @@
-# Transaction syntax - Algorand SDK vs Algo Builder
-This demo contains examples of transactions created via Algorand SDK and Algo Builder. The syntax is slightly different.
+# Transaction syntax - Algorand SDK
+This demo contains examples of transactions created via Algorand SDK
 
 The transactions performed are
 1. Create Asset
@@ -10,7 +10,6 @@ The transactions performed are
 
 Refer to the following guides for transaction syntax
 
-- [Algo Builder](https://algobuilder.dev/guide/execute-transaction.html)
 - [Algorand SDK (under functions section)](https://algorand.github.io/js-algorand-sdk/modules.html)
 
 ## Setup instructions
@@ -23,12 +22,6 @@ yarn install
 ### Update environement variables
 1. Copy `.env.example` to `.env`.
 2. Update Algorand Sandbox credentials in `.env` file.
-
-### Run transactions using Algo Builder
-```
-# add a --force flag at the end command to redeploy again
-yarn run algob deploy
-```
 
 ### Run transactions using Algorand SDK
 ```
